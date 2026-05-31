@@ -1,0 +1,65 @@
+# LoanSense — Intelligent Loan Approval Prediction System
+
+## Problem Statement
+SecureTrust Bank processes hundreds of loan applications daily
+using manual verification — slow, biased and inconsistent.
+Good customers get rejected. High-risk ones get approved.
+
+LoanSense predicts loan approval or rejection automatically
+using historical applicant data and Machine Learning.
+
+## Dataset
+- File: loan_approval_data.csv
+- Target: Loan_Approved (1 = Approved, 0 = Rejected)
+- 20 features: Credit Score, Income, DTI Ratio, 
+  Collateral, Employment, Property Area and more
+
+## Workflow
+
+### Step 1 — Data Exploration
+- df.info(), df.describe(), df.sample()
+- Checked class balance using pie chart
+- Analysed Education Level distribution with bar plot
+
+### Step 2 — Handling Missing Values
+- Numerical columns → filled with mean (SimpleImputer)
+- Categorical columns → filled with most frequent value
+
+### Step 3 — EDA (Exploratory Data Analysis)
+- Income and Credit Score distribution (histplot)
+- Outlier detection using boxplots (2x2 grid)
+- Credit Score vs Loan Approval (hue based histplot)
+- Correlation Heatmap to find strongest predictors
+
+### Step 4 — Encoding
+- LabelEncoder → Education_Level, Loan_Approved
+- OneHotEncoder (drop=first) → Employment, Marital Status,
+  Loan Purpose, Property Area, Gender, Employer Category
+- Dropped Applicant_ID (not a feature)
+
+### Step 5 — Train Test Split & Scaling
+- 80% training / 20% testing
+- StandardScaler applied on both train and test sets
+
+### Step 6 — Model Comparison
+
+| Model | Accuracy |
+|-------|----------|
+| Logistic Regression | - |
+| KNN (n=5, scaled) | - |
+| Naive Bayes (GaussianNB) | **86%** ✅ Winner |
+
+All models evaluated on:
+Accuracy · Precision · Recall · F1-Score · Confusion Matrix
+
+## Key Finding
+Naive Bayes outperformed KNN and Logistic Regression
+with 86% accuracy — probabilistic classification works
+well when features are largely independent of each other.
+
+## Tech Stack
+Python · Pandas · NumPy · Matplotlib · Seaborn · Scikit-learn
+
+## Author
+Chandan Shah
+github.com/chandan-shah226
